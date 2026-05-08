@@ -1,0 +1,8 @@
+﻿supplier_id,supplier_name,contact_name,cell_number,email_address,City,State,is_preferred
+1,Gulf Coast Poultry Co.,Jonathan Ali,(832) 555-0147,jali@gulfcoastpoultry.com,Houston,TX,TRUE
+2,Lone Star Food Distributors,Priya Nair,(512) 555-0293,pnair@lonestarfoods.com,Austin,TX,TRUE
+3,Fresh Harvest Produce LLC,Mehina Azeez,(210) 555-0381,mazeez@freshharvest.com,San Antonio,TX,FALSE
+4,Packaging Solutions Inc.,Janet Okafor,(214) 555-0462,jokafor@pkgsolutions.com,Dallas,TX,FALSE
+5,Sysco,Jim Farris,(713) 210-4567,jfarris@sysco.com,Forth Worth,TX,TRUE
+6,US Foods ,Ashley Williams ,(210) 458-5555,awilliams@usfoods.com,El Paso ,TX,TRUE
+7,Restaurant Supply,Brad Julio,(291)765-2231,bjulio@restaurantsupply.com,Galveston,TX,TRUE

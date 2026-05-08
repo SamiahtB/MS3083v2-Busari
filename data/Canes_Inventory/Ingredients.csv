@@ -1,0 +1,11 @@
+﻿ingredient_id,ingredient_name,category,unit_of_measure,reorder_threshold,unit_cost,lead_time,supplier_id,is_active
+1,Fresh Chicken Tenders,Protein,lb,200,3.85,3,1,TRUE
+2,Canes Sauce Mix,Sauce,gallon,20,12.5,5,2,TRUE
+3,CrinkleCut Fries,Frozen Sides,lb,300,1.2,2,3,TRUE
+4,Coleslaw Mix ,Produce,lb,100,0.65,2,3,TRUE
+5,Texas Toast Bread,Bread,loaf,150,0.95,1,2,TRUE
+6,All-Purpose Flour ,Dry Goods,lb,250,0.45,4,1,TRUE
+7,Canola Frying Oil,Oil,gallon,60,7.8,3,1,TRUE
+8,Lemonade Concentrate,Beverage,gallon,40,6.25,5,2,TRUE
+9,Large Beverage Cups,Packaging,case,30,18,7,4,TRUE
+10,Salt ,Dry Goods,oz,100,0.65,7,5,TRUE
