@@ -354,67 +354,67 @@ CREATE TABLE AutoNation_Dealership_Database.Features_Bridge(
 -- TASK 3.2: VERIFY THE DATA (Checking for row counts)
 -- ============================================================================
 
-    SELECT 'Vehicles' AS table_name, COUNT(*) AS row_count FROM AutoNation_Dealership_Database.Vehicles
+    SELECT 'Vehicles' AS table_name,       COUNT(*) AS row_count FROM AutoNation_Dealership_Database.Vehicles
     UNION ALL
     
-    SELECT 'Engine',               COUNT(*) FROM AutoNation_Dealership_Database.Engine
+    SELECT 'Engine',                       COUNT(*) FROM AutoNation_Dealership_Database.Engine
     UNION ALL
 
-    SELECT 'Fuel',             COUNT(*) FROM AutoNation_Dealership_Database.Fuel
+    SELECT 'Fuel',                         COUNT(*) FROM AutoNation_Dealership_Database.Fuel
     UNION ALL
 
-    SELECT 'Wheels',             COUNT(*) FROM AutoNation_Dealership_Database.Wheels
+    SELECT 'Wheels',                       COUNT(*) FROM AutoNation_Dealership_Database.Wheels
     UNION ALL
 
-    SELECT 'Tires',             COUNT(*) FROM AutoNation_Dealership_Database.Tires
+    SELECT 'Tires',                        COUNT(*) FROM AutoNation_Dealership_Database.Tires
     UNION ALL
 
-    SELECT 'Brakes',             COUNT(*) FROM AutoNation_Dealership_Database.Brakes
+    SELECT 'Brakes',                       COUNT(*) FROM AutoNation_Dealership_Database.Brakes
     UNION ALL
 
-    SELECT 'Steering',             COUNT(*) FROM AutoNation_Dealership_Database.Steering
+    SELECT 'Steering',                     COUNT(*) FROM AutoNation_Dealership_Database.Steering
     UNION ALL
 
-    SELECT 'Suspension',             COUNT(*) FROM AutoNation_Dealership_Database.Suspension
+    SELECT 'Suspension',                   COUNT(*) FROM AutoNation_Dealership_Database.Suspension
     UNION ALL
 
-    SELECT 'Exterior',             COUNT(*) FROM AutoNation_Dealership_Database.Exterior
+    SELECT 'Exterior',                     COUNT(*) FROM AutoNation_Dealership_Database.Exterior
     UNION ALL
 
-    SELECT 'Interior',             COUNT(*) FROM AutoNation_Dealership_Database.Interior
+    SELECT 'Interior',                     COUNT(*) FROM AutoNation_Dealership_Database.Interior
     UNION ALL
 
-    SELECT 'Cargo',             COUNT(*) FROM AutoNation_Dealership_Database.Cargo
+    SELECT 'Cargo',                        COUNT(*) FROM AutoNation_Dealership_Database.Cargo
     UNION ALL
 
-    SELECT 'Weight',             COUNT(*) FROM AutoNation_Dealership_Database.Weight
+    SELECT 'Weight',                       COUNT(*) FROM AutoNation_Dealership_Database.Weight
     UNION ALL
 
-    SELECT 'Emissions',             COUNT(*) FROM AutoNation_Dealership_Database.Emissions
+    SELECT 'Emissions',                    COUNT(*) FROM AutoNation_Dealership_Database.Emissions
     UNION ALL
 
-    SELECT 'Cost',             COUNT(*) FROM AutoNation_Dealership_Database.Cost
+    SELECT 'Cost',                         COUNT(*) FROM AutoNation_Dealership_Database.Cost
     UNION ALL
 
-    SELECT 'Salesperson',             COUNT(*) FROM AutoNation_Dealership_Database.Salesperson
+    SELECT 'Salesperson',                  COUNT(*) FROM AutoNation_Dealership_Database.Salesperson
     UNION ALL
 
-    SELECT 'Sales',             COUNT(*) FROM AutoNation_Dealership_Database.Sales
+    SELECT 'Sales',                        COUNT(*) FROM AutoNation_Dealership_Database.Sales
     UNION ALL
 
-    SELECT 'Transactions',             COUNT(*) FROM AutoNation_Dealership_Database.Transactions
+    SELECT 'Transactions',                 COUNT(*) FROM AutoNation_Dealership_Database.Transactions
     UNION ALL
 
-    SELECT 'Customers',             COUNT(*) FROM AutoNation_Dealership_Database.Customers
+    SELECT 'Customers',                    COUNT(*) FROM AutoNation_Dealership_Database.Customers
     UNION ALL
 
-    SELECT 'Financing',             COUNT(*) FROM AutoNation_Dealership_Database.Financing
+    SELECT 'Financing',                    COUNT(*) FROM AutoNation_Dealership_Database.Financing
     UNION ALL
 
-    SELECT 'Warranty',             COUNT(*) FROM AutoNation_Dealership_Database.Warranty
+    SELECT 'Warranty',                     COUNT(*) FROM AutoNation_Dealership_Database.Warranty
     UNION ALL
 
-    SELECT 'Features_Bridge',             COUNT(*) FROM AutoNation_Dealership_Database.Features_Bridge
+    SELECT 'Features_Bridge',              COUNT(*) FROM AutoNation_Dealership_Database.Features_Bridge
     UNION ALL
 
     ORDER BY table_name;
