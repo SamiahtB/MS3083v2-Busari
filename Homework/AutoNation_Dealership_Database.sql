@@ -308,7 +308,7 @@ CREATE TABLE AutoNation_Dealership_Database.Features_Bridge(
 --
 -- ############################################################################
 
-    COPY AutoNation_Dealership_Database.Vehicles (VEHICLE_ID, MAKE, MODEL, VIN_NUM, YEAR, USED_OR_NEW, CAR_LINK) FROM '/workspaces/MS3083-Busari-v2/data/autonation/vehicle.csv' WITH (FORMAT csv, HEADER true);
+     COPY AutoNation_Dealership_Database.Vehicles (VEHICLE_ID, MAKE, MODEL, VIN_NUM, YEAR, USED_OR_NEW, CAR_LINK) FROM '/workspaces/MS3083-Busari-v2/data/autonation/vehicle.csv' WITH (FORMAT csv, HEADER true);
 
     COPY AutoNation_Dealership_Database.Engine (ENGINE_ID, ENGINE_NAME, ENGINE_TYPE, HORSEPOWER, TORQUE, TRANSMISSION_TYPE, DRIVE_TYPE) FROM '/workspaces/MS3083-Busari-v2/data/autonation/engine.csv' WITH (FORMAT csv, HEADER true);
 
