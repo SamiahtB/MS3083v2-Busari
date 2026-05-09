@@ -1,4 +1,4 @@
-ENGINE_ID (PK),ENGINE_NAME,ENGINE_TYPE,HORSEPOWER,TORQUE,TRANSMISSION_TYPE,DRIVE_TYPE
+ENGINE_ID,ENGINE_NAME,ENGINE_TYPE,HORSEPOWER,TORQUE,TRANSMISSION_TYPE,DRIVE_TYPE
 201,2.5l 4 Cylinder Engine,Regular Unleaded H-4,180 @ 5800,178 @ 3700,Automatic,All Wheel Drive
 202,3.6l V6 Cylinder Engine,Regular Unleaded V-6,285 @ 6400,260 @ 4800,Automatic,Four Wheel Drive
 203,3l Straight 6 Cylinder Engine,Intercooled Turbo Gas/Electric I-6,375 @ 5500,369 @ 1600,Automatic w/OD,All Wheel Drive

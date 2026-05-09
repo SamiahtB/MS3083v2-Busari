@@ -1,4 +1,4 @@
-CUSTOMER_ID (PK),SALES_ID (PK),FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,ADDRESS,CITY,STATE,ZIP_CODE,,,,,,,,,,,,,,,,
+CUSTOMER_ID,SALES_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,ADDRESS,CITY,STATE,ZIP_CODE,,,,,,,,,,,,,,,,
 1701,101,Jen ,Smith ,jen.smith@gmail.com,281-446-2029,256 Kind street,Houston,Texas,77494,,,,,,,,,,,,,,,,
 1702,102,David ,Johnson ,david.johnson@gmail.com,210-458-0067,456 MLK drive,San Antonio,Texas,78660,,,,,,,,,,,,,,,,
 1703,103,Daniel,Williams ,daniel.williams@gmail.com,210-675-7854,12770 Rodeo Sq Drive,San Antonio,Texas,11368,,,,,,,,,,,,,,,,
