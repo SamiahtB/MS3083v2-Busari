@@ -1,0 +1,51 @@
+EXTERIOR_ID (PK),CAR_LENGTH,CAR_WIDTH,WHEEL_BASE,CAR_ COLOR,BODY_STYLE,NUMBER_OF_DOORS,HEADLIGHT_TYPE
+901,183.3,72,105.1,Crimson Red Pearl,SUV,4,LED Headlights
+902,188.4,73.9,118.4,Bright White Clearcoat,SUV,4,LED Headlights
+903,193.9,76.7,117.9,Obsidian Black Metallic,SUV,4,Automatic Highbeams
+904,187.2,75.6,112.8,Dune Grey Metallic,SUV,4,LED Headlights
+905,179.8,72.4,104.5,Platinum White Pearl,SUV,4,LED Headlights
+906,185.7,75.6,113.1,Black,SUV,4,LED Headlights
+907,159.1,69.7,99.2,Mirage Green,SUV,4,Automatic Highbeams
+908,193.5,77.5,116.7,Baltic Gray Metallic Clearcoat,SUV,4,LED Headlights
+909,174.9,72.6,106,Blazing Blue Metallic,SUV,4,LED Headlights
+910,185.8,72.5,104.5,Platinum White Pearl,SUV,4,LED Headlights
+911,213.2,80.3,136,Bright White Clearcoat,Van,2,Reflector Halogen Daytime Running Headlamps
+912,244.05,79.25,155,Summit White,Van,2,Daytime Running Lamps
+913,235.5,81.3,148,Oxford White,Van,2,Automatic Highbeams
+914,235.5,81.3,148,Ingot Silver Metallic,Van,2,Automatic Highbeams
+915,224.1,79.2,135,Summit White,Van,2,Daytime Running Lamps
+916,212,70.1,138,Oxford White,Van,3,Sealed-beam halogen headlights
+917,186.3,68.1,115.2,Fresh Powder,Van,2,Reflector Halogen Daytime Running Headlamps
+918,190,72.2,120.6,Frozen White,Van,4,Reflector Halogen Daytime Running Headlamps
+919,202.4,75.9,126,Arctic White,Van,3,Auto On/Off Reflector Halogen Daytime Running Headlamps w/Delay-Off
+920,235.5,81.3,148,Oxford White,Van,3,Automatic Highbeams
+921,NULL,NULL,NULL,Blue,NULL,NULL,NULL
+922,183.1,71.8,112.2,Black Obsidian,Coupe,2,High Intensity Discharge Xenon
+923,162.8,71.5,95.7,Black,Coupe,2,Variable-focus halogen
+924,191.1,80.5,113.6,Magneto Bronze,Coupe,2,Automatic Highbeams
+925,178.6,74.9,96.5,Carrara White Metallic,Coupe,2,LED Headlights
+926,192.7,72.4,111.2,Wind Chill Pearl,Sedan,4,Automatic Highbeams
+927,193.4,73.2,116.9,Cashmere Silver Metallic,Sedan,4,
+928,,,116,Infrared Tintcoat,Sedan,4,Full LED Lights
+929,192.2,73.3,111.4,Platinum White Pearl,Sedan,4,Automatic Highbeams
+930,177.3,71.5,103.6,Daytona Gray Pearl,Sedan,4,Automatic Highbeams
+931,182.5,70.1,106.3,Celestite,Sedan,4,Automatic Highbeams
+932,190.2,73.6,114.4,Ascot Green,Sedan,4,Automatic Highbeams
+933,179,70.9,107.7,Smokey Mauve Pearl,Sedan,4,Automatic Highbeams
+934,212.2,76.8,126.6,Black Sapphire Metallic,Sedan,4,Automatic Highbeams
+935,192.2,73.3,111.4,Crystal Black Pearl,Sedan,4,Automatic Highbeams
+936,232.9,82.1,144.5,Billet Silver Metallic,Truck,4,Automatic Highbeams
+937,231.9,86.3,145,Oxford White,Truck,4,Automatic Highbeams
+938,213.21,84.4,131.36,Sterling Gray Metallic,Truck,4,Automatic Highbeams
+939,231.7,79.9,145,Space White Metallic,Truck,4,Automatic Highbeams
+940,233.6,80.2,145.7,Wind Chill Pearl,Truck,4,Automatic Highbeams
+941,239,80,153,Iridum Metallic,Truck,4,Automatic Highbeams
+942,213,77.9,131.9,Bronze Oxide,Truck,4,Automatic Highbeams
+943,231.9,79.9,145,Ruby Red Metallic,Truck,4,Automatic Highbeams
+944,218,73.8,137.3,Bright White Clear,Truck,4,Reflector Halogen Daytime Running Headlamps
+945,266.09,96.6,172,Jet Black ,Truck,4,Automatic Highbeams
+946,171.5,71.9,104.7,Meta Blue Pearl ,Sedan (Electric),4,Automatic Highbeams
+947,184.8,72.8,113.2,Pearl White Multi-Coat,Sedan (Electric),4,Automatic Highbeams
+948,176.4,70.5,106.3,Scarlet Ember,Sedan (Electric),4,Reflector Halogen Headlamp
+949,190.55,76.94,116.3,Black,Sedan (Electric),4,Automatic Highbeams
+950,169.58,69.7,105.3,Summit White,Sedan (Electric),4,null

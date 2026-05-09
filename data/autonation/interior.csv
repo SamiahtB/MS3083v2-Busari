@@ -1,0 +1,51 @@
+INTERIOR_ID (PK),KEYLESS_ENTRY,SEAT_MATERIAL,SEATING_CAPACITY,ENTERTAINMENT_SYSTEM,CRUISE_CONTROL,AUTOLOCK,STEERING_WHEEL_TYPE,BACK_CAMERA
+1001,YES,Leather,5,Wireless Phone Connectivity,YES,NULL,Leatherette,YES
+1002,YES,Leather,5,Smart Device Integration,YES,NULL,Leatherette,YES
+1003,YES,Leather,5,Smart Device Integration,YES,NULL,Leather,YES
+1004,YES,Leatherette,5,Smart Device Integration,YES,NULL,Leatherette,YES
+1005,YES,Cloth Back Material,5,Smart Device Integration,YES,YES,NULL,YES 
+1006,YES,Leatherette,5,Smart Device Integration,YES,YES,Leather,YES
+1007,YES,Cloth,5,Smart Device Integration,YES,YES,Leather,YES
+1008,YES,Leather,5,Smart Device Integration,YES,YES,Leather,YES
+1009,YES,Leatherette,5,Smart Device Integration,YES,YES,Leatherette,YES
+1010,YES,Leatherette,5,Smart Device Integration,YES,YES,Leather,YES
+1011,YES,Vinyl Back Material,2,Smart Device Integration,NULL,YES,NULL,YES
+1012,NO,Vinyl Trim,2,"Audio system, AM/FM stereo with MP3 player seek-and-scan",NULL,NO,NULL,YES
+1013,YES,Cloth,2,Smart Device Integration,YES,YES,NULL,YES
+1014,YES,Vinyl Front Bucket,2,Smart Device Integration,YES,YES,NULL,YES
+1015,NO,Cloth,2,NULL,NO,NO,NULL,NO
+1016,NO,Vinyl Trim,8,AM/FM stereo,NO,NO,NULL,NO
+1017,YES,Cloth,2,"Radio w/Seek-Scan, MP3 Player, Clock and Radio Data System",YES,YES,NULL,YES 
+1018,YES,Vinyl Back Material,5,Smart Device Integration,YES,YES,NULL,YES
+1019,YES,Vinyl Back Material,2,Smart Device Integration,NULL,NULL,NULL,YES 
+1020,YES,Cloth,15,Smart Device Integration,YES,YES,NULL,YES 
+1021,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+1022,NULL,Leather,4,AM/FM stereo w/CD/MP3/WMA player,YES,NULL,Leather,NULL
+1023,YES,Leather,2,Smart Device Integration,YES,YES,Leather,NULL
+1024,YES,Leather,4,Smart Device Integration,YES,YES,Leather,YES
+1025,YES,Leather,4,Smart Device Integration,YES,YES,Leather,YES
+1026,YES,Leather ,5,Wireless Phone Connectivity,YES,YES,Leather ,null
+1027,YES,Leather ,5,Bluetooth Wireless Phone Connectivity,null,null,Leather ,null
+1028,YES,Leather ,5,Smart Device Integration,null,null,Leather ,yes
+1029,YES,Leatherette,5,Smart Device Integration,YES,null,Leatherette,yes
+1030,YES,Leather ,5,Smart Device Integration,YES,YES,,YES
+1031,YES,Cloth,,Smart Device Integration,YES,YES,,YES
+1032,yes,Leather,5,Smart Device Integration,yes,yes,Leather,yes
+1033,yes,Leatherette,,Smart Device Integration,yes,yes,,yes
+1034,yes,Leather,5,Smart Device Integration,yes,null,Leather,yes
+1035,yes,cloth,5,Smart Device Integration,null,null,Leather,yes
+1036,YES,cloth,5,Smart Device Integration,YES,YES,Leather,yes
+1037,YES,Leather,5,Smart Device Integration,YES,YES,Leather,yes
+1038,YES,cloth,5,Smart Device Integration,null,null,null,yes
+1039,YES,Leather,5,Smart Device Integration,YES,YES,null,null
+1040,YES,Leather,5,Smart Device Integration,YES,YES,null,yes
+1041,YES,Leather,5,Smart Device Integration,YES,YES,Leatherette,YES
+1042,YES,null,5,Smart Device Integration,YES,null,null,YES
+1043,YES,cloth,5,Smart Device Integration,YES,YES,Leather,YES
+1044,YES,Leather,5,Smart Device Integration,YES,null,Leatherette,YES
+1045,YES,null,5,Smart Device Integration,YES,YES,Leather ,YES 
+1046,YES,null,5,Smart Device Integration,YES,YES,Leatherette,YES 
+1047,yes,cloth,5,Smart Device Integration,yes,,Leatherette,YES 
+1048,YES,cloth,5,Smart Device Integration,yes,null,Leather,
+1049,yes,cloth,5,Satellite radio,yes,null,null,YES 
+1050,YES,cloth,5,Satellite radio,YES,NULL,NULL,YES 

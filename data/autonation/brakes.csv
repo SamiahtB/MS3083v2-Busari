@@ -1,0 +1,52 @@
+BRAKES_ID (PK),BRAKE_TYPE,BRAKE_ABS_SYSTEM_TYPE
+601,4-Wheel Disc,4-Wheel
+602,4-Wheel Disc,4-Wheel
+603,4-Wheel Disc,4-Wheel
+604,4-Wheel Disc,4-Wheel
+605,4-Wheel Disc,4-Wheel
+606,4-Wheel Disc,4-Wheel
+607,4-Wheel Disc,4-Wheel
+608,4-Wheel Disc,4-Wheel
+609,4-Wheel Disc,4-Wheel
+610,4-Wheel Disc,4-Wheel
+611,4-Wheel Disc,4-Wheel
+612,Pwr,4-Wheel
+613,4-Wheel Disc,4-Wheel
+614,4-Wheel Disc,4-Wheel
+615,Pwr,4-Wheel
+616,Pwr,4-Wheel
+617,Front Disc/Rear Drum,4-Wheel
+618,4-Wheel Disc,4-Wheel
+619,4-Wheel Disc,4-Wheel
+620,4-Wheel Disc,4-Wheel
+621,NULL,NULL
+622,Pwr,4-Wheel
+623,Pwr,4-Wheel
+624,4-Wheel Disc,4-Wheel
+625,4-Wheel Disc,4-Wheel
+626,4-Wheel Disc,4-Wheel
+627,4-Wheel Disc,4-Wheel
+628,Pwr,4-Wheel
+629,4-Wheel Disc,4-Wheel
+630,4-Wheel Disc,4-Wheel
+631,4-Wheel Disc,4-Wheel
+632,4-Wheel Disc,4-Wheel
+633,4-Wheel Disc,4-Wheel
+634,4-Wheel Disc,4-Wheel
+635,4-Wheel Disc,4-Wheel
+636,4-Wheel Disc,4-Wheel
+637,4-Wheel Disc,4-Wheel
+638,Pwr,4-Wheel
+639,4-Wheel Disc,4-Wheel
+640,4-Wheel Disc,4-Wheel
+641,Pwr,4-Wheel
+642,4-Wheel Disc,4-Wheel
+643,4-Wheel Disc,4-Wheel
+644,4-Wheel Disc,4-Wheel
+645,Pwr,4-Wheel
+646,4-Wheel Disc,4-Wheel
+647,4-Wheel Disc,4-Wheel
+648,4-Wheel Disc,4-Wheel
+649,Pwr,4-Wheel
+650,Partially Regenerative Electro-Hydraulic,4-Wheel
+,,

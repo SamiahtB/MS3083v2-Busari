@@ -1,0 +1,51 @@
+SUSPENSION_ID (PK),FRONT_SUSPENSION_TYPE,REAR_SUSPENSION_TYPE
+801,Strut,Double Wishbone
+802,Leading Link,Trailing Arm
+803,Double Wishbone,Multi-Link
+804,Strut,Multi-Link
+805,Strut,Multi-Link
+806,Multi-Link,Multi-Link
+807,Strut,Torsion Beam
+808,Multi-Link,Multi-Link
+809,Strut,Multi-Link
+810,Strut,Multi-Link
+811,Strut,Leaf
+812,Coil Spring,Hypoid Multi-Leaf
+813,Strut,Leaf
+814,Strut,Leaf
+815,Coil Spring,Hypoid Multi-Leaf
+816,Single channel,Multi-Leaf
+817,Strut,Leaf
+818,Strut,Torsion Beam
+819,Strut,Trailing Arm
+820,Strut,Leaf
+821,NULL,NULL
+822,Double Wishbone,Independent Multi-Link
+823,Independent,Multi-Link
+824,Double Wishbone,Multi-Link
+825,Strut,Multi-Link
+826,Strut,Multi-Link
+827,Double Wishbone,Multi-Link
+828,MacPherson Strut,Five-Link
+829,Strut,Multi-Link
+830,Strut,Multi-Link
+831,Strut,Torsion Beam
+832,Strut,Multi-Link
+833,Strut,Multi-Link
+834,Double Wishbone,Multi-Link
+835,Strut,Multi-Link
+836,Short And Long Arm,Multi-Link
+837,Double Wishbone,leaf
+838,Independent,2-Stage Multi-Leaf
+839,Double Wishbone,leaf
+840,Double Wishbone,Multi-Link
+841,Independent,2-Stage Multi-Leaf
+842,Double Wishbone,Multi-Link
+843,Double Wishbone,leaf
+844,Leading Link,Trailing Arm
+845,Short/Long Arm w/Torsion Bars,3-Stage Multi-Leaf
+846,Strut,Multi-Link
+847,Double Wishbone,Multi-Link
+848,Strut,Torsion Beam
+849,MacPherson strut,Multi-Link
+850,MacPherson Strut,w/Solid Stabilizer Bar

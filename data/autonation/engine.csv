@@ -1,0 +1,51 @@
+ENGINE_ID (PK),ENGINE_NAME,ENGINE_TYPE,HORSEPOWER,TORQUE,TRANSMISSION_TYPE,DRIVE_TYPE
+201,2.5l 4 Cylinder Engine,Regular Unleaded H-4,180 @ 5800,178 @ 3700,Automatic,All Wheel Drive
+202,3.6l V6 Cylinder Engine,Regular Unleaded V-6,285 @ 6400,260 @ 4800,Automatic,Four Wheel Drive
+203,3l Straight 6 Cylinder Engine,Intercooled Turbo Gas/Electric I-6,375 @ 5500,369 @ 1600,Automatic w/OD,All Wheel Drive
+204,2l 4 Cylinder Engine Turbo,Intercooled Turbo Gas/Electric I-4,255 @ 4700,295 @ 1600,Automatic w/OD,All Wheel Drive
+205,2l 4 Cylinder Engine,Regular Unleaded I-4,158 @ 6500,138 @ 4200,Automatic,Front Wheel Drive
+206,2l 4 Cylinder Engine Turbo,Intercooled Turbo Gas/Electric I-4,255 @ 5800,295 @ 2000,Automatic w/OD,All Wheel Drive
+207,1.6l 4 Cylinder Engine,Regular Unleaded I-4,121 @ 6300,113 @ 4500,CVT w/OD,Front Wheel Drive
+208,2l 4 Cylinder Engine Turbo,Intercooled Turbo Regular Unleaded I-4,324 @ 6000,332 @ 3000,Automatic w/OD,Four Wheel Drive
+209,2l 4 Cylinder Engine Turbo,Intercooled Turbo Regular Unleaded I-4,241 @ 4500,295 @ 1500,Auto-Shift Manual,All Wheel Drive
+210,1.5l 4 Cylinder Engine Turbo,Intercooled Turbo Premium Unleaded I-4,190 @ 6000,179 @ 1700,CVT w/OD,All Wheel Drive
+211,3.6l V6 Cylinder Engine,Regular Unleaded V-6,276 @ 6400,250 @ 4400,Automatic w/OD,Front Wheel Drive
+212,6.6l 8 Cylinder Engine,Gas V8,401 @ 5200,464 @ 4000,Automatic,Rear Wheel Drive
+213,3.5l V6 Cylinder Engine Turbo,Twin Turbo Regular Unleaded V-6,300 @ 5000,400 @ 2500,Automatic w/OD,All Wheel Drive
+214,3.5l V6 Cylinder Engine,Regular Unleaded V-6,275 @ 6250,260 @ 4000,Automatic w/OD,Rear Wheel Drive
+215,4.8l 8 Cylinder Engine,Gas V8,285 @ 5400,295 @ 4600,Automatic,Rear Wheel Drive
+216,5.4l 8 Cylinder Engine,Gas V8,255 @ 4500,350 @ 2500,Automatic w/OD,Rear Wheel Drive
+217,2l 4 Cylinder Engine,Regular Unleaded I-4,131 @ 5600,139 @ 4800,CVT w/OD,Front Wheel Drive
+218,2.5l 4 Cylinder Engine,Regular Unleaded I-4,169 @ 6000,171 @ 4500,Automatic w/OD,Front Wheel Drive
+219,2l 4 Cylinder Engine Turbo,Intercooled Turbo Premium Unleaded I-4,208 @ 5500,258 @ 1250,Automatic w/OD,Rear Wheel Drive
+220,3.5l V6 Cylinder Engine,Regular Unleaded V-6,275 @ 6250,260 @ 4000,Automatic w/OD,Rear Wheel Drive
+221,NULL,NULL,NULL,NULL,NULL,NULL
+222,3.7l V6 Cylinder Engine,Gas V6,330 @ 7000,270 @ 5200,Automatic w/OD,Rear Wheel Drive
+223,1.8l 4 Cylinder Engine Turbo,Gas I4,201 @ 5500,229 @ 2000 - 4300,Automatic,Rear Wheel Drive
+224,5.2l 12 Cylinder Engine Turbo,Twin Turbo Premium Unleaded V-12,824 @ 6500,737 @ 2500,Automatic w/OD,Rear Wheel Drive
+225,3.8l Flat 6 Cylinder Engine Turbo,Twin Turbo Premium Unleaded H-6,640 @ 6750,590 @ 2500,Auto-Shift Manual w/OD,All Wheel Drive
+226,2.5l 4 Cylinder Engine,Regular Unleaded I-4,206 @ 6600,186 @ 5000,Automatic w/OD,Front wheel drive
+227,3l Straight 6 Cylinder Engine Tur,Intercooled Turbo Premium Unleaded I-6,300 @ 5800,300 @ 1200,Automatic w/OD,Rear Wheel Drive
+228,6.2l 8 Cylinder Engine,Supercharged Gas V8,668 @ 6500,659 @ 3600,Automatic,Rear Wheel Drive
+229,1.5l 4 Cylinder Engine,Intercooled Turbo Regular Unleaded I-4,192 @ 5500,192 @ 1600,CVT w/OD,Front Wheel Drive
+230,2l 4 Cylinder Engine Turbo,Intercooled Turbo Premium Unleaded I-4,306 @ 5450,295 @ 2000,Auto-Shift Manual w/OD,All Wheel Drive
+231,2l 4 Cylinder Engine,Regular Unleaded I-4,169 @ 6600,151 @ 400,,Front Wheel Drive
+232,2.5l 4 Cylinder Engine Turbo,Intercooled Turbo Premium Unleaded I-4,300 @ 5800,311 @ 1650,Automatic w/OD,Rear Wheel Drive
+233,1.5l 4 Cylinder Engine Turbo,2l 4 Cylinder Engine Turbocharged,180 @ 6000,177 @ 1700,Automatic,Front Wheel Drive
+234,3l Straight 6 Cylinder Engine,Intercooled Turbo Gas/Electric I-6,483,516,Automatic,All Wheel Drive
+235,2l 4 Cylinder Engine Turbo,Intercooled Turbo Regular Unleaded I-4,252 @ 6500,273 @ 1500,Automatic,Front Wheel Drive
+236,3.6l V6 Cylinder Engine,Gas/Electric V-6,305 @ 6400,269 @ 4800,Automatic,Front Wheel Drive
+237,3.5l V6 Cylinder Engine Turbo,Twin Turbo Regular Unleaded V-6,450 @ 5000,510 @ 3500,Automatic,Front Wheel Drive
+238,2.7l 4 Cylinder Engine Turbo,Turbocharged Gas I4,310 @ 5600,430 @ 3000,Automatic,Rear Wheel Drive
+239,3.5l V6 Cylinder Engine Turbo,Twin Turbo Gas/Electric V-6,430 @ 6000,570 @ 3000,Automatic,Four Wheel Drive
+240,3.4l V6 Cylinder Engine Turbo,Twin Turbo Regular Unleaded V-6,389 @ 5200,479 @ 2400,Automatic,Four Wheel Drive
+241,5.3l 8 Cylinder Engine,Gas/Ethanol V8,355 @ 5600,383 @ 4100,Automatic,Four Wheel Drive
+242,2.4l 4 Cylinder Engine,Intercooled Turbo Regular Unleaded I-4,278 @ 6000,317 @ 1700,Automatic,Rear Wheel Drive
+243,2.7l V6 Cylinder Engine,Twin Turbo Regular Unleaded V-6,325 @ 5750,375 @ 3000,Automatic,Rear Wheel Drive
+244,3.6l V6 Cylinder Engine,Regular Unleaded V-6,285 @ 6400,260 @ 4400,Automatic,Four Wheel Drive
+245,6.6l 8 Cylinder Engine Turbo,Turbocharged Diesel V8,445 @ 2800,910 @ 1600,Automatic,Four Wheel Drive
+246,Electric Motor,Electric Motor,201 @ 3600,188,Automatic,Front Wheel Drive
+247,Electric Motor,Electric Motor,271,310,Automatic,Rear Wheel Drive
+248,Electric Motor,Electric Motor,147 @ 3282,236,Automatic,Front Wheel Drive
+249,Electric Motor,Electric Motor,220,243,Automatic,Front Wheel Drive
+250,Electric Motor,Electric Motor,210,169,Automatic,Front Wheel Drive

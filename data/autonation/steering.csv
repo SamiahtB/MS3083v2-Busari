@@ -1,0 +1,51 @@
+STEERING_ID (PK),STEERING_SYSTEM_TYPE,TURNING_DIAMETER
+701,Rack-Pinion,35.4
+702,Re-Circulating Ball,38.8
+703,Rack-Pinion,NULL
+704,Rack-Pinion,40
+705,Rack-Pinion,35.1
+706,Rack-Pinion,38.7
+707,Rack-Pinion,33.2
+708,Rack-Pinion,38
+709,Rack-Pinion,38.1
+710,Rack-Pinion,37
+711,Rack-Pinion,40.7
+712,Pwr,54.5
+713,Rack-Pinion,47.8
+714,Rack-Pinion,47.8
+715,Pwr,49.2
+716,Pwr,46.7
+717,Rack-Pinion,36.7
+718,Rack-Pinion,40
+719,Rack-Pinion,36.4
+720,Rack-Pinion,47.8
+721,NULL,NULL
+722,Pwr Rack & Pinion,36.1
+723,Pwr Rack & Pinion,34.5
+724,Rack-Pinion,41.7
+725,Rack-Pinion,35.8
+726,Rack-Pinion,38
+727,Rack-Pinion,39.2
+728,Pwr,null
+729,Rack-Pinion,38.1
+730,Rack-Pinion,36.4
+731,Rack-Pinion,35.6
+732,Rack-Pinion,36.7
+733,Rack-Pinion,38.1
+734,Rack-Pinion,null
+735,Rack-Pinion,39.4
+736,Rack-Pinion,46.2
+737,Rack-Pinion,null
+738,Electric Rack & Pinion,null
+739,Rack-Pinion,47.8
+740,Rack-Pinion,48.6
+741,Electric Rack & Pinion,48.6
+742,Rack-Pinion,44.4
+743,Rack-Pinion,47.8
+744,Re-Circulating Ball,44.8
+745,Pwr Recirculating Ball,57
+746,Rack-Pinion,34.8
+747,Rack-Pinion,38.8
+748,Rack-Pinion,36.1
+749,Rack EPS,38.06
+750,Column-Mounted Electric Pwr,37.7
