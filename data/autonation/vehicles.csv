@@ -1,0 +1,51 @@
+VEHICLE_ID (PK),MAKE,MODEL,VIN_NUM,YEAR,USED_OR_NEW ,CAR_LINK
+001,Subaru,Forrester,4S4SLDT65T3060975,2026,New,https://www.autonation.com/cars/4s4sldt65t3060975/subaru-forester-2026
+002,Jeep,Wrangler,1C4RJXFG4TW231311,2026,New,https://www.autonation.com/cars/1c4rjxfg4tw231311/jeep-wrangler-2026
+003,Mercedes-Benz,GLE,4JGFB5KBXTB620102,2026,New,https://www.autonation.com/cars/4jgfb5kbxtb620102/mercedes-benz-gle-2026
+004,BMW,X3,5UX53GP01T9369556,2026,New,https://www.autonation.com/cars/5ux53gp01t9369556/bmw-x3-2026
+005,Honda,HR-V,3CZRZ1H33TM744303,2026,New,https://www.autonation.com/cars/3czrz1h33tm744303/honda-hr-v-2026
+006,Mercedes-Benz,GLC,W1NKM4HB8TU108091,2026,New,https://www.autonation.com/cars/w1nkm4hb8tu108091/mercedes-benz-glc-2026
+007,Hyundai,Venue,KMHRC8A38TU463695,2026,New,https://www.autonation.com/cars/kmhrc8a38tu463695/hyundai-venue-2026
+008,Jeep,Grand Cherokee,1C4RJHER0T8585162,2026,New,https://www.autonation.com/cars/1c4rjher0t8585162/jeep-grand-cherokee-2026
+009,MINI,Countryman,WMZ23GA01T7T86270,2026,New,https://www.autonation.com/cars/wmz23ga01t7t86270/mini-countryman-2026
+010,Acura,ADX,3HDSA2H53SM710106,2025,New,https://www.autonation.com/cars/3hdsa2h53sm710106/acura-adx-2025
+011,Ram,ProMaster Cargo,3C6LRVBG8TE162732,2026,New,https://www.autonation.com/cars/3c6lrvbg8te162732/ram-promaster-cargo-2026
+012,Chevrolet,Express Cargo,1GCZGHF70T1206780,2026,New,https://www.autonation.com/cars/1gczghf70t1206780/chevrolet-express-cargo-2026
+013,Ford,Transit Cargo,1FTBR2CG8TKA39088,2026,New,https://www.autonation.com/cars/1ftbr2cg8tka39088/ford-transit-cargo-2026
+014,Ford,Transit Cargo,1FTBR1C86SKB01749,2025,New,https://www.autonation.com/cars/1ftbr1c86skb01749/ford-transit-cargo-2025
+015,Chevrolet,Express,1GCWGFCF3F1264566,2015,Used,https://www.autonation.com/cars/1gcwgfcf3f1264566/chevrolet-express-2015
+016,Ford,Econoline,1FMNE11L58DA34408,2008,Used,https://www.autonation.com/cars/1fmne11l58da34408/ford-econoline-2008
+017,Nissan,NV Compact Cargo,3N6CM0KN6KK711396,2019,Used,https://www.autonation.com/cars/3n6cm0kn6kk711396/nissan-nv200-compact cargo-2019
+018,Ford,Transit Connect,NM0GS9E78K1388477,2019,Used,https://www.autonation.com/cars/nm0gs9e78k1388477/ford-transit-connect-2019
+019,Mercedes-Benz,Metris Cargo,W1YV0BEY8N4192103,2022,Used,https://www.autonation.com/cars/w1yv0bey8n4192103/mercedes-benz-metris-cargo-2022
+020,Ford,Transit Passenger,1FBAX2C80TKA32943,2026,New,https://www.autonation.com/cars/1fbax2c80tka32943/ford-transit-passenger-2026
+021,Bentley,Continental GTC,1G2ZH36N594212553,2026,New,https://www.autonation.com/cars/scbdp4zg5tc023896/bentley-continental-gtc-2026
+022,Infiniti,G37,JN1CV6EK5CM421739,2012,Used,https://www.autonation.com/cars/jn1cv6ek5cm421739/infiniti-g37-2012
+023,Mercedes-Benz,SLK,WDDPK4HA3DF054625,2013,Used,https://www.autonation.com/cars/wddpk4ha3df054625/mercedes-benz-slk-2013
+024,Ashton Martin,Vanquish,SCFUMCHV4TGK61099,2026,New,https://www.autonation.com/cars/scfumchv4tgk61099/aston-martin-vanquish-2026
+025,Porsche,911,WP0CD2A97MS263719,2021,Used ,https://www.autonation.com/cars/wp0cd2a97ms263719/porsche-911-2021
+026,Toyota,Camry,4T1K61AK1MU570290,2021,Used ,https://www.autonation.com/cars/4t1k61ak1mu570290/toyota-camry-2021
+027,BMW,5 Series,WBA5B1C57GG131924,2016,Used,https://www.autonation.com/cars/wba5b1c57gg131924/bmw-5-series-2016
+028,Cadillac,CT5-V,1G6D35R67N0810569,2022,Used,https://www.autonation.com/cars/1g6d35r67n0810569/cadillac-ct5-v-2022
+029,Honda,Accord,1HGCV1F34LA073975,2020,Used,https://www.autonation.com/cars/1hgcv1f34la073975/honda-accord-2020
+030,Audi,S3,WAUH3DGY0PA053568,2023,Used,https://www.autonation.com/cars/wauh3dgy0pa053568/audi-s3-2023
+031,Toyota ,Corolla ,5YFB4MDE8SP269625,2025,Used,https://www.autonation.com/cars/5yfb4mde8sp269625/toyota-corolla-2025
+032,Kia,Stinger,KNAE35LD6P6135268,2023,Used,https://www.autonation.com/cars/knae35ld6p6135268/kia-stinger-2023
+033,Honda,Civic,19XFL1H84RE019897,2024,Used,https://www.autonation.com/cars/19xfl1h84re019897/honda-civic-2024
+034,BMW,7 Series,WBA43EH02SCU71298,2025,Used,https://www.autonation.com/cars/wba43eh02scu71298/bmw-7-series-2025
+035,Honda,Accord,1HGCV2F37LA001139,2020,Used,https://www.autonation.com/cars/1hgcv2f37la001139/honda-accord-2020
+036,Ram,1500,1C6RRFFG4NN429647,2022,Used,https://www.autonation.com/cars/1c6rrffg4nn429647/ram-1500-2022
+037,Ford,F-150,1FTFW1RG6KFA41215,2019,Used,https://www.autonation.com/cars/1ftfw1rg6kfa41215/ford-f-150-2019
+038,Chevrolet,Colorado,1GCPSCEK9R1231605,2024,Used,https://www.autonation.com/cars/1gcpscek9r1231605/chevrolet-colorado-2024
+039,Ford,F-150,1FTFW7LD5SFB23390,2025,Used,https://www.autonation.com/cars/1ftfw7ld5sfb23390/ford-f-150-2025
+040,Toyota ,Tundra 4WD,5TFMA5DB5TX338237,2026,Used,https://www.autonation.com/cars/5tfma5db5tx338237/toyota-tundra-4wd-2026
+041,GMC,Sierra 1500,3GTU2UEC9EG535692,2014,Used,https://www.autonation.com/cars/3gtu2uec9eg535692/gmc-sierra-1500-2014
+042,Toyota ,Tacoma,3TMKB5FN2TM070166,2026,New ,https://www.autonation.com/cars/3tmkb5fn2tm070166/toyota-tacoma-2wd-2026
+043,Ford ,F-150,1FTEW1CP6GFC46903,2016,Used,"USED 2016 Ford F-150 for sale in San Antonio, TX, 78249 - AutoNation"
+044,Jeep,Gladiator ,1C6JJTBG5ML590155,2021,Used,https://www.autonation.com/cars/1c6jjtbg5ml590155/jeep-gladiator-2021
+045,GMC,Sierra 3500HD,1GT49WEY3MF267404,2021,Used,https://www.autonation.com/cars/1gt49wey3mf267404/gmc-sierra-3500hd-2021
+046,Hyundai,Kona Electric ,KM8HC3A62RU011808,2024,Used,https://www.autonation.com/cars/km8hc3a62ru011808/hyundai-kona-electric-2024
+047,Tesla ,Model 3 ,5YJ3E1EAXMF973447,2021,Used,"USED 2021 Tesla Model 3 for sale in San Antonio, TX, 78249 - AutoNation"
+048,Nissan,Leaf,1N4AZ1CP5JC312846,2018,Used,https://www.autonation.com/cars/1n4az1cp5jc312846/nissan-leaf-2018
+049,Chevrolet,Equinox ,3GN7DMRP9SS226342,2025,Used,"USED 2025 Chevrolet Equinox EV for sale in Austin, TX, 78728 - AutoNation"
+050,Chevrolet,Bolt ,1G1FY6EV9VF107460,2027,New ,"NEW 2027 Chevrolet Bolt for sale in Austin, TX, 78759 - AutoNation"
