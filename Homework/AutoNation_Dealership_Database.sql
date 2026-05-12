@@ -185,10 +185,41 @@ CREATE TABLE AutoNation_Dealership_Database.Salesperson(
     SALESPERSON_ID   SERIAL PRIMARY KEY,
     FIRST_NAME VARCHAR(100)  NOT NULL,
     LAST_NAME VARCHAR(100)  NOT NULL,
-    EXPERIENCE_YEARS INT NOT NULL,
-    COMMISSION_RATE DECIMAL(5,2) NOT NULL DEFAULT 0
+    EXPERIENCE_YEARS INT NOT NULL
 );
 
+-- ============================================================================
+-- TASK 1.13: CREATE THE SALES TABLE 
+-- ============================================================================
+
+CREATE TABLE AutoNation_Dealership_Database.Sales (
+    SALES_ID          SERIAL PRIMARY KEY,
+    VEHICLE_ID        INT REFERENCES AutoNation_Dealership_Database.Vehicles(VEHICLE_ID),
+    PURCHASE_DATE     DATE,
+    PAYMENT_METHOD    VARCHAR(100),
+    PAYMENT_FINANCED  BOOLEAN,
+    SALESPERSON_ID    INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID)
+);
+
+-- ============================================================================
+-- TASK 1.14: CREATE THE TRANSACTION TABLE 
+-- ============================================================================
+
+CREATE TABLE AutoNation_Dealership_Database.Transaction (
+    TRANSACTION_ID   SERIAL PRIMARY KEY,
+    SALES_ID         INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
+    TRANSACTION_DATE DATE NOT NULL,
+    AMOUNT_PAID      DECIMAL(6,2) NOT NULL,
+    PAYMENT_METHOD   VARCHAR(100) NOT NULL,
+    DOWN_PAYMENT     BOOLEAN NOT NULL,
+    PAID_IN_FULL     BOOLEAN NOT NULL
+);
+
+ALTER TABLE AutoNation_Dealership_Database.Transaction
+    ADD COLUMN tax_amount        DECIMAL(6,2) NOT NULL DEFAULT 0,
+    ADD COLUMN total_with_tax    DECIMAL(6,2) NOT NULL DEFAULT 0,
+    ADD COLUMN sales_person_id   INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID),
+    ADD COLUMN customer_id       INT REFERENCES AutoNation_Dealership_Database.Customers(CUSTOMER_ID);
 -- ============================================================================
 -- TASK 1.15: CREATE THE CUSTOMERS TABLE
 -- ============================================================================
@@ -240,34 +271,15 @@ CREATE TABLE AutoNation_Dealership_Database.Financing(
 -- ============================================================================
 
 CREATE TABLE AutoNation_Dealership_Database.Warranty(
-    WARRANTY_ID       SERIAL PRIMARY KEY,
-    SALES_ID          INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
-    WARRANTY_TYPE     VARCHAR(100) NOT NULL,
-    DURATION_MONTHS   INT NOT NULL,
-    MILEAGE           INT NOT NULL,
-    COST              DECIMAL(10,2) NOT NULL,
-    START_DATE        DATE,
-    EXPIRATION_DATE   DATE,
-    COVERAGE_DETAILS  TEXT
+    WARRANTY_ID     SERIAL PRIMARY KEY,
+    SALES_ID     INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
+    WARRANTY_TYPE   VARCHAR(100) NOT NULL,
+    DURATION_MONTHS  INT NOT NULL,
+    MILEAGE INT NOT NULL,
+    COST   DECIMAL(5,2) NOT NULL
 );
 
--- ============================================================================
--- TASK 1.14: CREATE THE TRANSACTIONS TABLE
--- ============================================================================
 
-CREATE TABLE AutoNation_Dealership_Database.Transactions (
-    TRANSACTION_ID   SERIAL PRIMARY KEY,
-    SALES_ID         INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
-    CUSTOMER_ID      INT REFERENCES AutoNation_Dealership_Database.Customers(CUSTOMER_ID),
-    SALES_PERSON_ID  INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID),
-    TRANSACTION_DATE DATE NOT NULL,
-    AMOUNT_PAID      DECIMAL(10,2) NOT NULL,
-    PAYMENT_METHOD   VARCHAR(100) NOT NULL,
-    DOWN_PAYMENT     BOOLEAN NOT NULL,
-    PAID_IN_FULL     BOOLEAN NOT NULL,
-    TAX_AMOUNT       DECIMAL(10,2) NOT NULL DEFAULT 0,
-    TOTAL_WITH_TAX   DECIMAL(10,2) NOT NULL DEFAULT 0
-);
 
 -- ############################################################################
 --
@@ -313,7 +325,7 @@ CREATE TABLE AutoNation_Dealership_Database.Features_Bridge(
 --
 -- ############################################################################
 
-COPY AutoNation_Dealership_Database.Vehicles (VEHICLE_ID, MAKE, MODEL, VIN_NUMBER, YEAR, USED_OR_NEW, CAR_LINK) FROM '/workspaces/MS3083v2-Busari/data/autonation/vehicles.csv' WITH (FORMAT csv, HEADER true);
+     COPY AutoNation_Dealership_Database.Vehicles (VEHICLE_ID, MAKE, MODEL, VIN_NUM, YEAR, USED_OR_NEW, CAR_LINK) FROM '/workspaces/MS3083v2-Busari/data/autonation/vehicle.csv' WITH (FORMAT csv, HEADER true);
 
 COPY AutoNation_Dealership_Database.Engine (ENGINE_ID, ENGINE_NAME, ENGINE_TYPE, HORSEPOWER, TORQUE, TRANSMISSION_TYPE, DRIVE_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/engine.csv' WITH (FORMAT csv, HEADER true);
 
@@ -449,90 +461,6 @@ ORDER BY t.transaction_date DESC;
 -- ############################################################################
 --     PART 4.2: BASIC QUERIES (Cars still in stock)
 -- ############################################################################
-SELECT
-    v.vin_number             AS vin,
-    v.year                   AS vehicle_year,
-    v.make                   AS make,
-    v.model                  AS model,
-    v.used_or_new            AS condition,
-    c.total_price            AS listing_price
-FROM AutoNation_Dealership_Database.Vehicles v
-LEFT JOIN AutoNation_Dealership_Database.Sales s ON v.vehicle_id = s.vehicle_id
-LEFT JOIN AutoNation_Dealership_Database.Features_Bridge fb ON v.vehicle_id = fb.vehicle_id
-LEFT JOIN AutoNation_Dealership_Database.Cost c ON fb.cost_id = c.cost_id
-WHERE s.vehicle_id IS NULL
-ORDER BY c.total_price DESC NULLS LAST;
-
-
--- ############################################################################
---     PART 4.3: BASIC QUERIES (Total Sales by Salesperson)
--- ############################################################################
-SELECT
-    CONCAT(sp.first_name, ' ', sp.last_name)        AS salesperson_name,
-    COUNT(t.transaction_id)                          AS total_cars_sold,
-    SUM(t.amount_paid)                               AS total_sales_amount,
-    SUM(t.amount_paid * (sp.commission_rate / 100))  AS total_commission_earned
-FROM AutoNation_Dealership_Database.Salesperson sp
-LEFT JOIN AutoNation_Dealership_Database.Transaction t  ON sp.salesperson_id = t.sales_person_id
-GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
-ORDER BY total_sales_amount DESC NULLS LAST;
-
--- ############################################################################
---     PART 4.4: BASIC QUERIES (Warranty Report)
--- ############################################################################
-SELECT
-    v.vin_number                                    AS vin,
-    v.year                                          AS vehicle_year,
-    v.make                                          AS make,
-    v.model                                         AS model,
-    v.used_or_new                                   AS condition,
-    w.warranty_type                                 AS warranty_type,
-    w.coverage_details                              AS coverage_details,
-    w.start_date                                    AS warranty_start,
-    w.expiration_date                               AS warranty_expiration,
-    CONCAT(c.first_name, ' ', c.last_name)          AS customer_name
-FROM AutoNation_Dealership_Database.Warranty w
-JOIN AutoNation_Dealership_Database.Sales s         ON w.sales_id = s.sales_id
-JOIN AutoNation_Dealership_Database.Vehicles v      ON s.vehicle_id = v.vehicle_id
-LEFT JOIN AutoNation_Dealership_Database.Customers c ON s.sales_id = c.sales_id
-WHERE w.expiration_date >= CURRENT_DATE
-ORDER BY w.expiration_date ASC;
-
--- ############################################################################
---     PART 4.5: BASIC QUERIES (Commission Report)
--- ############################################################################
-
-SELECT
-    CONCAT(sp.first_name, ' ', sp.last_name)        AS salesperson_name,
-    COUNT(t.transaction_id)                          AS total_cars_sold,
-    SUM(t.amount_paid)                               AS total_sales_amount,
-    SUM(t.amount_paid * (sp.commission_rate / 100))  AS total_commission_earned
-FROM AutoNation_Dealership_Database.Salesperson sp
-LEFT JOIN AutoNation_Dealership_Database.Transaction t  ON sp.salesperson_id = t.sales_person_id
-WHERE t.transaction_date >= CURRENT_DATE - INTERVAL '30 days'
-GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
-ORDER BY total_commission_earned DESC NULLS LAST;
-
--- ############################################################################
---     PART 4.6: BASIC QUERIES (Commission Report by SalesPerson)
--- ############################################################################
-SELECT
-    CONCAT(sp.first_name, ' ', sp.last_name)            AS salesperson_name,
-    sp.commission_rate                                   AS commission_rate,
-    COUNT(DISTINCT t.sales_id)                           AS total_sales,
-    SUM(t.amount_paid)                                   AS total_sales_amount,
-    SUM(COALESCE(w.cost, 0))                             AS total_warranty_cost,
-    SUM(t.amount_paid) + SUM(COALESCE(w.cost, 0))        AS total_combined_amount,
-    ROUND(
-        (SUM(t.amount_paid) + SUM(COALESCE(w.cost, 0))) 
-        * (sp.commission_rate / 100), 2
-    )                                                    AS total_commission_earned
-FROM AutoNation_Dealership_Database.Salesperson sp
-LEFT JOIN AutoNation_Dealership_Database.Transaction t  ON sp.salesperson_id = t.sales_person_id
-LEFT JOIN AutoNation_Dealership_Database.Sales s        ON t.sales_id = s.sales_id
-LEFT JOIN AutoNation_Dealership_Database.Warranty w     ON s.sales_id = w.sales_id
-GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
-ORDER BY total_commission_earned DESC NULLS LAST;
 
 
 -- ############################################################################
