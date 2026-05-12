@@ -1,3 +1,4 @@
+-- Active: 1774905350948@@localhost@5432@AutoNation_Dealership_Database@public
 -- ============================================================================
 -- Project: AutoNation Car Database
 -- ============================================================================
@@ -221,7 +222,7 @@ CREATE TABLE AutoNation_Dealership_Database.Sales (
 ALTER TABLE AutoNation_Dealership_Database.Sales
 ADD COLUMN COMMISSION DECIMAL(10,2);
 
-ALTER TABLE AUTONation_Dealership_Database.Sales
+ALTER TABLE AutoNation_Dealership_Database.Sales
 ADD COLUMN CUSTOMER_ID INT REFERENCES AutoNation_Dealership_Database.Customers(CUSTOMER_ID);
 -- ============================================================================
 -- TASK 1.16: CREATE THE FINANCING TABLE
@@ -654,7 +655,7 @@ SELECT
     COALESCE(SUM(t.amount_paid), 0) AS total_sales_amount,
     COALESCE(SUM(t.amount_paid * (sp.commission_rate / 100)), 0) AS total_commission_earned
 FROM AutoNation_Dealership_Database.Salesperson sp
-LEFT JOIN AutoNation_Dealership_Database.Transaction t
+LEFT JOIN AutoNation_Dealership_Database.Transactions t
     ON sp.salesperson_id = t.sales_person_id
     AND t.transaction_date >= CURRENT_DATE - INTERVAL '30 days'
 GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
@@ -675,7 +676,7 @@ SELECT
         * (sp.commission_rate / 100), 2
     )                                                    AS total_commission_earned
 FROM AutoNation_Dealership_Database.Salesperson sp
-LEFT JOIN AutoNation_Dealership_Database.Transaction t  ON sp.salesperson_id = t.sales_person_id
+LEFT JOIN AutoNation_Dealership_Database.Transactions t  ON sp.salesperson_id = t.sales_person_id
 LEFT JOIN AutoNation_Dealership_Database.Sales s        ON t.sales_id = s.sales_id
 LEFT JOIN AutoNation_Dealership_Database.Warranty w     ON s.sales_id = w.sales_id
 GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
@@ -710,10 +711,10 @@ SELECT
     f.interest_rate, 
     f.loan_terms_months, 
     f.monthly_payment
-FROM autonation_dealership_database.sales s
-JOIN autonation_dealership_database.customers c ON s.customer_id = c.customer_id
-JOIN autonation_dealership_database.vehicles v ON s.vehicle_id = v.vehicle_id
-LEFT JOIN autonation_dealership_database.financing f ON s.sales_id = f.sales_id;
+FROM AutoNation_Dealership_Database.sales s
+JOIN AutoNation_Dealership_Database.customers c ON s.customer_id = c.customer_id
+JOIN AutoNation_Dealership_Database.vehicles v ON s.vehicle_id = v.vehicle_id
+LEFT JOIN AutoNation_Dealership_Database.financing f ON s.sales_id = f.sales_id;
 
 -- ############################################################################
 --     5.2: Above-Average Sales
