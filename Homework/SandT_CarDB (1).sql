@@ -185,41 +185,10 @@ CREATE TABLE AutoNation_Dealership_Database.Salesperson(
     SALESPERSON_ID   SERIAL PRIMARY KEY,
     FIRST_NAME VARCHAR(100)  NOT NULL,
     LAST_NAME VARCHAR(100)  NOT NULL,
-    EXPERIENCE_YEARS INT NOT NULL
+    EXPERIENCE_YEARS INT NOT NULL,
+    COMMISSION_RATE DECIMAL(5,2) NOT NULL DEFAULT 0
 );
 
--- ============================================================================
--- TASK 1.13: CREATE THE SALES TABLE 
--- ============================================================================
-
-CREATE TABLE AutoNation_Dealership_Database.Sales (
-    SALES_ID          SERIAL PRIMARY KEY,
-    VEHICLE_ID        INT REFERENCES AutoNation_Dealership_Database.Vehicles(VEHICLE_ID),
-    PURCHASE_DATE     DATE,
-    PAYMENT_METHOD    VARCHAR(100),
-    PAYMENT_FINANCED  BOOLEAN,
-    SALESPERSON_ID    INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID)
-);
-
--- ============================================================================
--- TASK 1.14: CREATE THE TRANSACTION TABLE 
--- ============================================================================
-
-CREATE TABLE AutoNation_Dealership_Database.Transaction (
-    TRANSACTION_ID   SERIAL PRIMARY KEY,
-    SALES_ID         INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
-    TRANSACTION_DATE DATE NOT NULL,
-    AMOUNT_PAID      DECIMAL(6,2) NOT NULL,
-    PAYMENT_METHOD   VARCHAR(100) NOT NULL,
-    DOWN_PAYMENT     BOOLEAN NOT NULL,
-    PAID_IN_FULL     BOOLEAN NOT NULL
-);
-
-ALTER TABLE AutoNation_Dealership_Database.Transaction
-    ADD COLUMN tax_amount        DECIMAL(6,2) NOT NULL DEFAULT 0,
-    ADD COLUMN total_with_tax    DECIMAL(6,2) NOT NULL DEFAULT 0,
-    ADD COLUMN sales_person_id   INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID),
-    ADD COLUMN customer_id       INT REFERENCES AutoNation_Dealership_Database.Customers(CUSTOMER_ID);
 -- ============================================================================
 -- TASK 1.15: CREATE THE CUSTOMERS TABLE
 -- ============================================================================
@@ -246,10 +215,14 @@ CREATE TABLE AutoNation_Dealership_Database.Sales (
     PURCHASE_DATE     DATE,
     PAYMENT_METHOD    VARCHAR(100),
     PAYMENT_FINANCED  BOOLEAN,
-    SALESPERSON_ID    INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID),
-    CUSTOMER_ID       INT REFERENCES AutoNation_Dealership_Database.Customers(CUSTOMER_ID)
+    SALESPERSON_ID    INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID)
 );
 
+ALTER TABLE AutoNation_Dealership_Database.Sales
+ADD COLUMN COMMISSION DECIMAL(10,2);
+
+ALTER TABLE AUTONation_Dealership_Database.Sales
+ADD COLUMN CUSTOMER_ID INT REFERENCES AutoNation_Dealership_Database.Customers(CUSTOMER_ID);
 -- ============================================================================
 -- TASK 1.16: CREATE THE FINANCING TABLE
 -- ============================================================================
@@ -271,15 +244,34 @@ CREATE TABLE AutoNation_Dealership_Database.Financing(
 -- ============================================================================
 
 CREATE TABLE AutoNation_Dealership_Database.Warranty(
-    WARRANTY_ID     SERIAL PRIMARY KEY,
-    SALES_ID     INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
-    WARRANTY_TYPE   VARCHAR(100) NOT NULL,
-    DURATION_MONTHS  INT NOT NULL,
-    MILEAGE INT NOT NULL,
-    COST   DECIMAL(5,2) NOT NULL
+    WARRANTY_ID       SERIAL PRIMARY KEY,
+    SALES_ID          INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
+    WARRANTY_TYPE     VARCHAR(100) NOT NULL,
+    DURATION_MONTHS   INT NOT NULL,
+    MILEAGE           INT NOT NULL,
+    COST              DECIMAL(10,2) NOT NULL,
+    START_DATE        DATE,
+    EXPIRATION_DATE   DATE,
+    COVERAGE_DETAILS  TEXT
 );
 
+-- ============================================================================
+-- TASK 1.14: CREATE THE TRANSACTIONS TABLE
+-- ============================================================================
 
+CREATE TABLE AutoNation_Dealership_Database.Transactions (
+    TRANSACTION_ID   SERIAL PRIMARY KEY,
+    SALES_ID         INT REFERENCES AutoNation_Dealership_Database.Sales(SALES_ID),
+    CUSTOMER_ID      INT REFERENCES AutoNation_Dealership_Database.Customers(CUSTOMER_ID),
+    SALES_PERSON_ID  INT REFERENCES AutoNation_Dealership_Database.Salesperson(SALESPERSON_ID),
+    TRANSACTION_DATE DATE NOT NULL,
+    AMOUNT_PAID      DECIMAL(10,2) NOT NULL,
+    PAYMENT_METHOD   VARCHAR(100) NOT NULL,
+    DOWN_PAYMENT     BOOLEAN NOT NULL,
+    PAID_IN_FULL     BOOLEAN NOT NULL,
+    TAX_AMOUNT       DECIMAL(10,2) NOT NULL DEFAULT 0,
+    TOTAL_WITH_TAX   DECIMAL(10,2) NOT NULL DEFAULT 0
+);
 
 -- ############################################################################
 --
@@ -321,53 +313,192 @@ CREATE TABLE AutoNation_Dealership_Database.Features_Bridge(
 
 -- ############################################################################
 --
+--     ADDITITONAL INPUTS (Due to some inputs being null, we are going to change the "NOT NULL" constraint to allow null values for some columns in the tables)
+
+
+ALTER TABLE AutoNation_Dealership_Database.Engine
+ALTER COLUMN ENGINE_NAME DROP NOT NULL,
+ALTER COLUMN ENGINE_TYPE DROP NOT NULL,
+ALTER COLUMN HORSEPOWER DROP NOT NULL,
+ALTER COLUMN TORQUE DROP NOT NULL,
+ALTER COLUMN TRANSMISSION_TYPE DROP NOT NULL,
+ALTER COLUMN DRIVE_TYPE DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Fuel
+ALTER COLUMN FUEL_TYPE DROP NOT NULL,
+ALTER COLUMN TANK_CAPACITY DROP NOT NULL,
+ALTER COLUMN MPG_CITY DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Wheels
+ALTER COLUMN FRONT_WHEEL_SIZE DROP NOT NULL,
+ALTER COLUMN REAR_WHEEL_SIZE DROP NOT NULL,
+ALTER COLUMN WHEEL_TYPE DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Tires
+ALTER COLUMN FRONT_TIRE_SIZE DROP NOT NULL,
+ALTER COLUMN REAR_TIRE_SIZE DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Brakes
+ALTER COLUMN BRAKE_TYPE DROP NOT NULL,
+ALTER COLUMN BRAKE_ABS_SYSTEM_TYPE DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Steering
+ALTER COLUMN STEERING_SYSTEM_TYPE DROP NOT NULL,
+ALTER COLUMN TURNING_DIAMETER DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Suspension
+ALTER COLUMN FRONT_SUSPENSION_TYPE DROP NOT NULL,
+ALTER COLUMN REAR_SUSPENSION_TYPE DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Exterior
+ALTER COLUMN CAR_LENGTH DROP NOT NULL,
+ALTER COLUMN CAR_WIDTH DROP NOT NULL,
+ALTER COLUMN WHEEL_BASE DROP NOT NULL,
+ALTER COLUMN CAR_COLOR DROP NOT NULL,
+ALTER COLUMN BODY_STYLE DROP NOT NULL,
+ALTER COLUMN NUMBER_OF_DOORS DROP NOT NULL,
+ALTER COLUMN HEADLIGHT_TYPE DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Interior
+ALTER COLUMN KEYLESS_ENTRY DROP NOT NULL,
+ALTER COLUMN SEAT_MATERIAL DROP NOT NULL,
+ALTER COLUMN SEATING_CAPACITY DROP NOT NULL,
+ALTER COLUMN ENTERTAINMENT_SYSTEM DROP NOT NULL,
+ALTER COLUMN CRUISE_CONTROL DROP NOT NULL,
+ALTER COLUMN AUTO_LOCK DROP NOT NULL,
+ALTER COLUMN STEERING_WHEEL_MATERIAL DROP NOT NULL,
+ALTER COLUMN BACK_CAMERA DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Cargo_Area
+ALTER COLUMN CARGO_VOLUME DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Weight
+ALTER COLUMN CURB_WEIGHT DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Emissions
+ALTER COLUMN EMISSIONS_PER_YEAR DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Cost
+ALTER COLUMN TOTAL_PRICE DROP NOT NULL,
+ALTER COLUMN TITLE_APPLICATION_FEE DROP NOT NULL,
+ALTER COLUMN DEALER_FEE DROP NOT NULL,
+ALTER COLUMN VEHICLE_REGISTRATION_FEE DROP NOT NULL,
+ALTER COLUMN LICENSE_PLATE_COST DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Salesperson
+ALTER COLUMN FIRST_NAME DROP NOT NULL,
+ALTER COLUMN LAST_NAME DROP NOT NULL,
+ALTER COLUMN EXPERIENCE_YEARS DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Customers
+ALTER COLUMN FIRST_NAME DROP NOT NULL,
+ALTER COLUMN LAST_NAME DROP NOT NULL,
+ALTER COLUMN EMAIL DROP NOT NULL,
+ALTER COLUMN PHONE_NUMBER DROP NOT NULL,
+ALTER COLUMN ADDRESS DROP NOT NULL,
+ALTER COLUMN CITY DROP NOT NULL,
+ALTER COLUMN STATE DROP NOT NULL,
+ALTER COLUMN ZIP_CODE DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Sales
+ALTER COLUMN PURCHASE_DATE DROP NOT NULL,
+ALTER COLUMN PAYMENT_METHOD DROP NOT NULL,
+ALTER COLUMN PAYMENT_FINANCED DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Financing
+ALTER COLUMN DOWN_PAYMENT DROP NOT NULL,
+ALTER COLUMN AMOUNT_FINANCED DROP NOT NULL,
+ALTER COLUMN INTEREST_RATE DROP NOT NULL,
+ALTER COLUMN MONTHLY_PAYMENT DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Warranty
+ALTER COLUMN WARRANTY_TYPE DROP NOT NULL,
+ALTER COLUMN DURATION_MONTHS DROP NOT NULL,
+ALTER COLUMN MILEAGE DROP NOT NULL,
+ALTER COLUMN COST DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Transactions
+ALTER COLUMN TRANSACTION_DATE DROP NOT NULL,
+ALTER COLUMN AMOUNT_PAID DROP NOT NULL,
+ALTER COLUMN PAYMENT_METHOD DROP NOT NULL,
+ALTER COLUMN DOWN_PAYMENT DROP NOT NULL,
+ALTER COLUMN PAID_IN_FULL DROP NOT NULL;
+
+ALTER TABLE AutoNation_Dealership_Database.Vehicles
+ALTER COLUMN MAKE DROP NOT NULL,
+ALTER COLUMN MODEL DROP NOT NULL,
+ALTER COLUMN VIN_NUMBER DROP NOT NULL,
+ALTER COLUMN YEAR DROP NOT NULL,
+ALTER COLUMN USED_OR_NEW DROP NOT NULL,
+ALTER COLUMN CAR_LINK DROP NOT NULL;
+
+-- ############################################################################
+--
 --     PART 3.1 : LOAD DATA FROM CSV FILES  
 --
 -- ############################################################################
 
-     COPY AutoNation_Dealership_Database.Vehicles (VEHICLE_ID, MAKE, MODEL, VIN_NUM, YEAR, USED_OR_NEW, CAR_LINK) FROM '/workspaces/MS3083v2-Busari/data/autonation/vehicle.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Engine (ENGINE_ID, ENGINE_NAME, ENGINE_TYPE, HORSEPOWER, TORQUE, TRANSMISSION_TYPE, DRIVE_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/engine.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Fuel (FUEL_ID, FUEL_TYPE, TANK_CAPACITY, MPG_CITY) FROM '/workspaces/MS3083v2-Busari/data/autonation/fuel.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Wheels (WHEEL_ID, FRONT_WHEEL_SIZE, REAR_WHEEL_SIZE, WHEEL_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/wheels.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Tires (TIRE_ID, FRONT_TIRE_SIZE, REAR_TIRE_SIZE) FROM '/workspaces/MS3083v2-Busari/data/autonation/tires.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Brakes (BRAKES_ID, BRAKE_TYPE, BRAKE_ABS_SYSTEM_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/brakes.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Steering (STEERING_ID, STEERING_SYSTEM_TYPE, TURNING_DIAMETER) FROM '/workspaces/MS3083v2-Busari/data/autonation/steering.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Suspension (SUSPENSION_ID, FRONT_SUSPENSION_TYPE, REAR_SUSPENSION_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/suspension.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Exterior (EXTERIOR_ID, CAR_LENGTH, CAR_WIDTH, WHEEL_BASE, CAR_COLOR, BODY_STYLE, NUMBER_OF_DOORS, HEADLIGHT_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/exterior.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Interior (INTERIOR_ID, KEYLESS_ENTRY, SEAT_MATERIAL, SEATING_CAPACITY, ENTERTAINMENT_SYSTEM, CRUISE_CONTROL, AUTO_LOCK, STEERING_WHEEL_MATERIAL, BACK_CAMERA) FROM '/workspaces/MS3083v2-Busari/data/autonation/interior.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Cargo_Area (CARGO_AREA_ID, CARGO_VOLUME) FROM '/workspaces/MS3083v2-Busari/data/autonation/cargo.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Weight (WEIGHT_ID, CURB_WEIGHT) FROM '/workspaces/MS3083v2-Busari/data/autonation/weight.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Emissions (EMISSIONS_ID, EMISSIONS_PER_YEAR) FROM '/workspaces/MS3083v2-Busari/data/autonation/emissions.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Cost (COST_ID, TOTAL_PRICE, TITLE_APPLICATION_FEE, DEALER_FEE, VEHICLE_REGISTRATION_FEE, LICENSE_PLATE_COST) FROM '/workspaces/MS3083v2-Busari/data/autonation/cost.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Salesperson (SALESPERSON_ID, FIRST_NAME, LAST_NAME, EXPERIENCE_YEARS, COMMISSION_RATE) FROM '/workspaces/MS3083v2-Busari/data/autonation/salesperson.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Customers (CUSTOMER_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, ADDRESS, CITY, STATE, ZIP_CODE) FROM '/workspaces/MS3083v2-Busari/data/autonation/customers.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Sales (SALES_ID, VEHICLE_ID, PURCHASE_DATE, PAYMENT_FINANCED, PAYMENT_METHOD, SALESPERSON_ID, CUSTOMER_ID) FROM '/workspaces/MS3083v2-Busari/data/autonation/sales.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Transactions (TRANSACTION_ID, SALES_ID, CUSTOMER_ID, SALES_PERSON_ID, TRANSACTION_DATE, AMOUNT_PAID, PAYMENT_METHOD, DOWN_PAYMENT, PAID_IN_FULL, TAX_AMOUNT, TOTAL_WITH_TAX) FROM '/workspaces/MS3083v2-Busari/data/autonation/transactions.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Financing (FINANCING_ID, SALES_ID, DOWN_PAYMENT, AMOUNT_FINANCED, INTEREST_RATE, LOAN_TERMS_MONTHS, MONTHLY_PAYMENT, LENDER_NAME, LOAN_START_DATE) FROM '/workspaces/MS3083v2-Busari/data/autonation/financing.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Warranty (WARRANTY_ID, SALES_ID, WARRANTY_TYPE, DURATION_MONTHS, MILEAGE, COST, START_DATE, EXPIRATION_DATE, COVERAGE_DETAILS) FROM '/workspaces/MS3083v2-Busari/data/autonation/warranty.csv' WITH (FORMAT csv, HEADER true);
-
-COPY AutoNation_Dealership_Database.Features_Bridge (VEHICLE_ID, ENGINE_ID, FUEL_ID, WHEEL_ID, TIRE_ID, BRAKES_ID, STEERING_ID, SUSPENSION_ID, EXTERIOR_ID, INTERIOR_ID, CARGO_ID, WEIGHT_ID, EMISSIONS_ID, COST_ID) FROM '/workspaces/MS3083v2-Busari/data/autonation/features_bridge.csv' WITH (FORMAT csv, HEADER true);
+COPY AutoNation_Dealership_Database.Vehicles (VEHICLE_ID, MAKE, MODEL, VIN_NUMBER, YEAR, USED_OR_NEW, CAR_LINK) FROM '/workspaces/MS3083v2-Busari/data/autonation/vehicles.csv' WITH (FORMAT csv, HEADER true); 
 
 
+COPY AutoNation_Dealership_Database.Engine (ENGINE_ID, ENGINE_NAME, ENGINE_TYPE, HORSEPOWER, TORQUE, TRANSMISSION_TYPE, DRIVE_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/engine.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Fuel (FUEL_ID, FUEL_TYPE, TANK_CAPACITY, MPG_CITY) FROM '/workspaces/MS3083v2-Busari/data/autonation/fuel.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Wheels (WHEEL_ID, FRONT_WHEEL_SIZE, REAR_WHEEL_SIZE, WHEEL_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/wheels.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Tires (TIRE_ID, FRONT_TIRE_SIZE, REAR_TIRE_SIZE) FROM '/workspaces/MS3083v2-Busari/data/autonation/tires.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Brakes (BRAKES_ID, BRAKE_TYPE, BRAKE_ABS_SYSTEM_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/brakes.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Steering (STEERING_ID, STEERING_SYSTEM_TYPE, TURNING_DIAMETER) FROM '/workspaces/MS3083v2-Busari/data/autonation/steering.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Suspension (SUSPENSION_ID, FRONT_SUSPENSION_TYPE, REAR_SUSPENSION_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/suspension.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Exterior (EXTERIOR_ID, CAR_LENGTH, CAR_WIDTH, WHEEL_BASE, CAR_COLOR, BODY_STYLE, NUMBER_OF_DOORS, HEADLIGHT_TYPE) FROM '/workspaces/MS3083v2-Busari/data/autonation/exterior.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Interior (INTERIOR_ID, KEYLESS_ENTRY, SEAT_MATERIAL, SEATING_CAPACITY, ENTERTAINMENT_SYSTEM, CRUISE_CONTROL, AUTO_LOCK, STEERING_WHEEL_MATERIAL, BACK_CAMERA) FROM '/workspaces/MS3083v2-Busari/data/autonation/interior.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Cargo_Area (CARGO_AREA_ID, CARGO_VOLUME) FROM '/workspaces/MS3083v2-Busari/data/autonation/cargo.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Weight (WEIGHT_ID, CURB_WEIGHT) FROM '/workspaces/MS3083v2-Busari/data/autonation/weight.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Emissions (EMISSIONS_ID, EMISSIONS_PER_YEAR) FROM '/workspaces/MS3083v2-Busari/data/autonation/emissions.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Cost (COST_ID, TOTAL_PRICE, TITLE_APPLICATION_FEE, DEALER_FEE, VEHICLE_REGISTRATION_FEE, LICENSE_PLATE_COST) FROM '/workspaces/MS3083v2-Busari/data/autonation/cost.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Salesperson (SALESPERSON_ID, FIRST_NAME, LAST_NAME, EXPERIENCE_YEARS, COMMISSION_RATE) FROM '/workspaces/MS3083v2-Busari/data/autonation/salesperson.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Customers (CUSTOMER_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, ADDRESS, CITY, STATE, ZIP_CODE) FROM '/workspaces/MS3083v2-Busari/data/autonation/customers.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Sales (SALES_ID, VEHICLE_ID, PURCHASE_DATE, PAYMENT_FINANCED, PAYMENT_METHOD, SALESPERSON_ID, CUSTOMER_ID,COMMISSION) FROM '/workspaces/MS3083v2-Busari/data/autonation/sales.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Transactions (TRANSACTION_ID, SALES_ID, CUSTOMER_ID, SALES_PERSON_ID, TRANSACTION_DATE, AMOUNT_PAID, PAYMENT_METHOD, DOWN_PAYMENT, PAID_IN_FULL, TAX_AMOUNT, TOTAL_WITH_TAX) FROM '/workspaces/MS3083v2-Busari/data/autonation/transactions.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Financing (FINANCING_ID, SALES_ID, DOWN_PAYMENT, AMOUNT_FINANCED, INTEREST_RATE, LOAN_TERMS_MONTHS, MONTHLY_PAYMENT, LENDER_NAME, LOAN_START_DATE) FROM '/workspaces/MS3083v2-Busari/data/autonation/financing.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Warranty (WARRANTY_ID, SALES_ID, WARRANTY_TYPE, DURATION_MONTHS, MILEAGE, COST, START_DATE, EXPIRATION_DATE, COVERAGE_DETAILS) FROM '/workspaces/MS3083v2-Busari/data/autonation/warranty.csv' WITH (FORMAT csv, HEADER true); 
+
+
+COPY AutoNation_Dealership_Database.Features_Bridge (VEHICLE_ID, ENGINE_ID, FUEL_ID, WHEEL_ID, TIRE_ID, BRAKES_ID, STEERING_ID, SUSPENSION_ID, EXTERIOR_ID, INTERIOR_ID, CARGO_ID, WEIGHT_ID, EMISSIONS_ID, COST_ID) FROM '/workspaces/MS3083v2-Busari/data/autonation/features_bridge.csv' WITH (FORMAT csv, HEADER true); 
 
 -- ============================================================================
 -- TASK 3.2: VERIFY THE DATA (Checking for row counts)
@@ -421,7 +552,7 @@ COPY AutoNation_Dealership_Database.Features_Bridge (VEHICLE_ID, ENGINE_ID, FUEL
     SELECT 'Sales',                        COUNT(*) FROM AutoNation_Dealership_Database.Sales
     UNION ALL
 
-    SELECT 'Transaction',                  COUNT(*) FROM AutoNation_Dealership_Database.Transaction
+    SELECT 'Transaction',                  COUNT(*) FROM AutoNation_Dealership_Database.Transactions
     UNION ALL
 
     SELECT 'Customers',                    COUNT(*) FROM AutoNation_Dealership_Database.Customers
@@ -450,7 +581,7 @@ SELECT
     CONCAT(sp.first_name, ' ', sp.last_name)  AS salesperson_name,
     CONCAT(c.first_name, ' ', c.last_name)    AS customer_name,
     t.transaction_date                  AS sale_date
-FROM AutoNation_Dealership_Database.Transaction t
+FROM AutoNation_Dealership_Database.Transactions t
 JOIN AutoNation_Dealership_Database.Sales s        ON t.sales_id = s.sales_id
 JOIN AutoNation_Dealership_Database.Vehicles v     ON s.vehicle_id = v.vehicle_id
 JOIN AutoNation_Dealership_Database.Salesperson sp ON t.sales_person_id = sp.salesperson_id
@@ -461,6 +592,94 @@ ORDER BY t.transaction_date DESC;
 -- ############################################################################
 --     PART 4.2: BASIC QUERIES (Cars still in stock)
 -- ############################################################################
+SELECT
+    v.vin_number             AS vin,
+    v.year                   AS vehicle_year,
+    v.make                   AS make,
+    v.model                  AS model,
+    v.used_or_new            AS condition,
+    c.total_price            AS listing_price,
+    e.car_color              AS color
+FROM AutoNation_Dealership_Database.Vehicles v
+LEFT JOIN AutoNation_Dealership_Database.Sales s ON v.vehicle_id = s.vehicle_id
+LEFT JOIN AutoNation_Dealership_Database.Features_Bridge fb ON v.vehicle_id = fb.vehicle_id
+LEFT JOIN AutoNation_Dealership_Database.Cost c ON fb.cost_id = c.cost_id
+LEFT JOIN AutoNation_Dealership_Database.Exterior e     ON fb.exterior_id = e.exterior_id
+WHERE s.vehicle_id IS NULL
+ORDER BY c.total_price DESC NULLS LAST
+;
+
+
+-- ############################################################################
+--     PART 4.3: BASIC QUERIES (Total Sales by Salesperson)
+-- ############################################################################
+SELECT
+    CONCAT(sp.first_name, ' ', sp.last_name)        AS salesperson_name,
+    COUNT(t.transaction_id)                          AS total_cars_sold,
+    SUM(t.amount_paid)                               AS total_sales_amount,
+    SUM(t.amount_paid * (sp.commission_rate / 100))  AS total_commission_earned
+FROM AutoNation_Dealership_Database.Salesperson sp
+LEFT JOIN AutoNation_Dealership_Database.Transactions t  ON sp.salesperson_id = t.sales_person_id
+GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
+ORDER BY total_sales_amount DESC NULLS LAST;
+
+-- ############################################################################
+--     PART 4.4: BASIC QUERIES (Warranty Report)
+-- ############################################################################
+SELECT
+    v.vin_number                                    AS vin,
+    v.year                                          AS vehicle_year,
+    v.make                                          AS make,
+    v.model                                         AS model,
+    v.used_or_new                                   AS condition,
+    w.warranty_type                                 AS warranty_type,
+    w.coverage_details                              AS coverage_details,
+    w.start_date                                    AS warranty_start,
+    w.expiration_date                               AS warranty_expiration,
+    CONCAT(c.first_name, ' ', c.last_name)          AS customer_name
+FROM AutoNation_Dealership_Database.Warranty w
+JOIN AutoNation_Dealership_Database.Sales s         ON w.sales_id = s.sales_id
+JOIN AutoNation_Dealership_Database.Vehicles v      ON s.vehicle_id = v.vehicle_id
+JOIN AutoNation_Dealership_Database.Customers c ON s.customer_id = c.customer_id
+WHERE w.expiration_date >= CURRENT_DATE
+ORDER BY w.expiration_date ASC;
+
+-- ############################################################################
+--     PART 4.5: BASIC QUERIES (Commission Report)
+-- ############################################################################
+
+SELECT
+    CONCAT(sp.first_name, ' ', sp.last_name) AS salesperson_name,
+    COUNT(t.transaction_id) AS total_cars_sold,
+    COALESCE(SUM(t.amount_paid), 0) AS total_sales_amount,
+    COALESCE(SUM(t.amount_paid * (sp.commission_rate / 100)), 0) AS total_commission_earned
+FROM AutoNation_Dealership_Database.Salesperson sp
+LEFT JOIN AutoNation_Dealership_Database.Transaction t
+    ON sp.salesperson_id = t.sales_person_id
+    AND t.transaction_date >= CURRENT_DATE - INTERVAL '30 days'
+GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
+ORDER BY total_commission_earned DESC NULLS LAST;
+
+-- ############################################################################
+--     PART 4.6: BASIC QUERIES (Commission Report by SalesPerson)
+-- ############################################################################
+SELECT
+    CONCAT(sp.first_name, ' ', sp.last_name)            AS salesperson_name,
+    sp.commission_rate                                   AS commission_rate,
+    COUNT(DISTINCT t.sales_id)                           AS total_sales,
+    SUM(t.amount_paid)                                   AS total_sales_amount,
+    SUM(COALESCE(w.cost, 0))                             AS total_warranty_cost,
+    SUM(t.amount_paid) + SUM(COALESCE(w.cost, 0))        AS total_combined_amount,
+    ROUND(
+        (SUM(t.amount_paid) + SUM(COALESCE(w.cost, 0))) 
+        * (sp.commission_rate / 100), 2
+    )                                                    AS total_commission_earned
+FROM AutoNation_Dealership_Database.Salesperson sp
+LEFT JOIN AutoNation_Dealership_Database.Transaction t  ON sp.salesperson_id = t.sales_person_id
+LEFT JOIN AutoNation_Dealership_Database.Sales s        ON t.sales_id = s.sales_id
+LEFT JOIN AutoNation_Dealership_Database.Warranty w     ON s.sales_id = w.sales_id
+GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
+ORDER BY total_commission_earned DESC NULLS LAST;
 
 
 -- ############################################################################
@@ -491,10 +710,10 @@ SELECT
     f.interest_rate, 
     f.loan_terms_months, 
     f.monthly_payment
-FROM AutoNation_Dealership_Database.Sales s
-JOIN AutoNation_Dealership_Database.Customers c ON s.customer_id = c.customer_id
-JOIN AutoNation_Dealership_Database.Vehicles v ON s.vehicle_id = v.vehicle_id
-JOIN AutoNation_Dealership_Database.Financing f ON s.sales_id = f.sales_id;
+FROM autonation_dealership_database.sales s
+JOIN autonation_dealership_database.customers c ON s.customer_id = c.customer_id
+JOIN autonation_dealership_database.vehicles v ON s.vehicle_id = v.vehicle_id
+LEFT JOIN autonation_dealership_database.financing f ON s.sales_id = f.sales_id;
 
 -- ############################################################################
 --     5.2: Above-Average Sales
@@ -504,13 +723,13 @@ SELECT
     CONCAT(sp.first_name, ' ', sp.last_name) AS salesperson,
     CONCAT(c.first_name, ' ', c.last_name) AS customer,
     t.amount_paid AS sale_price
-FROM AutoNation_Dealership_Database.Transaction t
+FROM AutoNation_Dealership_Database.Transactions t
 JOIN AutoNation_Dealership_Database.Sales s ON t.sales_id = s.sales_id
 JOIN AutoNation_Dealership_Database.Vehicles v ON s.vehicle_id = v.vehicle_id
 JOIN AutoNation_Dealership_Database.Salesperson sp ON t.sales_person_id = sp.salesperson_id
 JOIN AutoNation_Dealership_Database.Customers c ON t.customer_id = c.customer_id
 WHERE t.amount_paid > (
-    SELECT AVG(amount_paid) FROM AutoNation_Dealership_Database.Transaction
+    SELECT AVG(amount_paid) FROM AutoNation_Dealership_Database.Transactions
 )
 ORDER BY t.amount_paid DESC;
 
@@ -527,7 +746,7 @@ SELECT
     t.total_with_tax AS total,
     COALESCE(w.warranty_type, 'No Warranty') AS warranty_type,
     ROUND(t.amount_paid * (sp.commission_rate / 100), 2) AS commission_amount
-FROM AutoNation_Dealership_Database.Transaction t
+FROM AutoNation_Dealership_Database.Transactions t
 JOIN AutoNation_Dealership_Database.Sales s ON t.sales_id = s.sales_id
 JOIN AutoNation_Dealership_Database.Vehicles v ON s.vehicle_id = v.vehicle_id
 JOIN AutoNation_Dealership_Database.Salesperson sp ON t.sales_person_id = sp.salesperson_id
@@ -544,7 +763,7 @@ SELECT
     SUM(t.amount_paid * (sp.commission_rate / 100)) AS total_commission,
     COUNT(DISTINCT t.sales_id) AS cars_sold
 FROM AutoNation_Dealership_Database.Salesperson sp
-LEFT JOIN AutoNation_Dealership_Database.Transaction t ON sp.salesperson_id = t.sales_person_id
+LEFT JOIN AutoNation_Dealership_Database.Transactions t ON sp.salesperson_id = t.sales_person_id
 GROUP BY sp.salesperson_id, sp.first_name, sp.last_name, sp.commission_rate
 HAVING SUM(t.amount_paid) > 50000
 ORDER BY total_revenue DESC;
