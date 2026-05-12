@@ -1,4 +1,4 @@
--- Active: 1774905350948@@localhost@5432@AutoNation_Dealership_Database@public
+-- Active: 1774905350948@@localhost@5432@student
 -- ============================================================================
 -- Project: AutoNation Car Database
 -- ============================================================================
